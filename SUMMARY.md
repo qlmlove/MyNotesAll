@@ -8,7 +8,7 @@
   * [Yii2框架](phpfen-lei/yii2kuang-jia.md)
   * [PHP7新特性](phpfen-lei/php7xin-te-xing.md)
 * [Python分类](pythonfen-lei.md)
-  * 基础知识
+  * [基础知识](pythonfen-lei/ji-chu-zhi-shi.md)
   * [Django框架](pythonfen-lei/djangokuang-jia.md)
   * [Flask框架](pythonfen-lei/flaskkuang-jia.md)
 * [数据库分类](shu-ju-ku-fen-lei.md)
