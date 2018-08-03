@@ -2,11 +2,11 @@
 
 * [简介](README.md)
 * [PHP分类](phpfen-lei.md)
-  * [基础知识](chapter1/ji-chu-zhi-shi.md)
-  * [ThinkPHP5框架](chapter1/thinkphp5kuang-jia.md)
-  * [Laravel框架](chapter1/laravelkuang-jia.md)
-  * [Yii2框架](chapter1/yii2kuang-jia.md)
-  * [PHP7新特性](chapter1/php7xin-te-xing.md)
+  * [基础知识](phpfen-lei/ji-chu-zhi-shi.md)
+  * [ThinkPHP5框架](phpfen-lei/thinkphp5kuang-jia.md)
+  * [Laravel框架](phpfen-lei/laravelkuang-jia.md)
+  * [Yii2框架](phpfen-lei/yii2kuang-jia.md)
+  * [PHP7新特性](phpfen-lei/php7xin-te-xing.md)
 * [Python分类](pythonfen-lei.md)
   * 基础知识
   * [Django框架](pythonfen-lei/djangokuang-jia.md)
@@ -22,6 +22,4 @@
   * HTML
 * [Linux](linux.md)
   * [LNMP环境安装](linux/lnmphuan-jing-an-zhuang.md)
-
-
 
