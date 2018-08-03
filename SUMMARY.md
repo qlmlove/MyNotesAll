@@ -6,6 +6,7 @@
   * [ThinkPHP5框架](chapter1/thinkphp5kuang-jia.md)
   * [Laravel框架](chapter1/laravelkuang-jia.md)
   * [Yii2框架](chapter1/yii2kuang-jia.md)
+  * [PHP7新特性](chapter1/php7xin-te-xing.md)
 * [Python分类](pythonfen-lei.md)
   * 基础知识
   * [Django框架](pythonfen-lei/djangokuang-jia.md)
@@ -19,4 +20,6 @@
   * JavaScript
   * CSS
   * HTML
+* [Linux](linux.md)
+  * [LNMP环境安装](linux/lnmphuan-jing-an-zhuang.md)
 
