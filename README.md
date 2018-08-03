@@ -2,9 +2,5 @@
 
 个人学习笔记，任何方面的都在这里
 
-\* \[目录\]\(SUMMARY.md\)
-
-\[测试\]\(https://www.baidu.com\)
-
-
+\* \[目录\]\([SUMMARY.md](/SUMMARY.md)\)
 
