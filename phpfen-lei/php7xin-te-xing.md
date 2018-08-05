@@ -475,6 +475,46 @@ Warning: Cannot call func_num_args() dynamically in %s on line %d
 1. `void`  
 2. `iterable`
 
+##### 4.Numerical string conversions now respect scientific notation
+
+Integer operations and conversions on numerical strings now respect scientific notation. This also includes the \(int\) cast operation, and the following functions: intval\(\) \(where the base is 10\), settype\(\), decbin\(\), decoct\(\), and dechex\(\).
+
+##### 5.mt\_rand 算法修复
+
+mt\_rand\(\) will now default to using the fixed version of the Mersenne Twister algorithm. If deterministic output from mt\_srand\(\) was relied upon, then the MT\_RAND\_PHP with the ability to preserve the old \(incorrect\) implementation via an additional optional second parameter to mt\_srand\(\).
+
+##### 6.rand\(\) 别名 mt\_rand\(\) 和 srand\(\) 别名 mt\_srand\(\)
+
+rand\(\) and srand\(\) have now been made aliases to mt\_rand\(\) and mt\_srand\(\), respectively. This means that the output for the following functions have changes: rand\(\), shuffle\(\), str\_shuffle\(\), and array\_rand\(\).
+
+##### 7.Disallow the ASCII delete control character in identifiers
+
+The ASCII delete control character \(0x7F\) can no longer be used in identifiers that are not quoted.
+
+##### 8.error\_log changes with syslog value
+
+If the error\_log ini setting is set to syslog, the PHP error levels are mapped to the syslog error levels. This brings finer differentiation in the error logs in contrary to the previous approach where all the errors are logged with the notice level only.
+
+##### 9.在不完整的对象上不再调用析构方法
+
+析构方法在一个不完整的对象（例如在构造方法中抛出一个异常）上将不再会被调用
+
+##### 10.call\_user\_func\(\)不再支持对传址的函数的调用
+
+call\_user\_func\(\) 现在在调用一个以引用作为参数的函数时将始终失败。
+
+##### 11.字符串不再支持空索引操作符 The empty index operator is not supported for strings anymore
+
+对字符串使用一个空索引操作符（例如x）将会抛出一个致命错误， 而不是静默地将其转为一个数组
+
+##### 12.ini配置项移除
+
+下列ini配置项已经被移除：  
+1. session.entropy\_file  
+2.  session.entropy\_length  
+3. session.hash\_function  
+4. session.hash\_bits\_per\_character
+
 ---
 
 _**参考:**_
