@@ -339,18 +339,114 @@ foreach ($array as list($a, $b)) {
 }
 ```
 
-参考:
+##### 19. 为unserialize\(\)提供过滤
+
+这个特性旨在提供更安全的方式解包不可靠的数据。它通过白名单的方式来防止潜在的代码注入。
+
+```php
+//将所有对象分为__PHP_Incomplete_Class对象
+$data = unserialize($foo, ["allowed_classes" => false]);
+//将所有对象分为__PHP_Incomplete_Class 对象 除了ClassName1和ClassName2
+$data = unserialize($foo, ["allowed_classes" => ["ClassName1", "ClassName2"]);
+//默认行为，和 unserialize($foo)相同
+$data = unserialize($foo, ["allowed_classes" => true]);
+
 ```
 
- 
+##### 20. intdiv\(\)
 
- 
+接收两个参数作为被除数和除数，返回他们相除结果的整数部分。
 
- 
+```php
+var_dump(intdiv(7, 2));
+```
 
- 
+输出`int(3)`
 
+##### 21. Session options
+
+现在，session\_start\(\)函数可以接收一个数组作为参数，可以覆盖php.ini中session的配置项。  
+比如，把cache\_limiter设置为私有的，同时在阅读完session后立即关闭。
+
+```php
+session_start(['cache_limiter' => 'private',
+               'read_and_close' => true,
+]);
+```
+
+##### 22. $\_SERVER\[“REQUEST\_TIME\_FLOAT”\]
+
+这个是用来统计服务请求时间的，并用ms\(毫秒\)来表示
+
+```php
+echo "脚本执行时间 ", round(microtime(true) - $_SERVER["REQUEST_TIME_FLOAT"], 2), "s";  
+```
+
+23.empty\(\) 支持任意表达式
+
+empty\(\) 现在支持传入一个任意表达式，而不仅是一个变量
+
+```
+function always_false() {
+    return false;
+}
  
+if (empty(always_false())) {
+    echo 'This will be printed.';
+}
+ 
+if (empty(true)) {
+    echo 'This will not be printed.';
+}
+
+```
+
+输出  
+This will be printed.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 ---
 
