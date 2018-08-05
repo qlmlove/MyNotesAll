@@ -426,7 +426,11 @@ foreach ($users as $user) {
 $userNames = array_column($users, 'name');
 ```
 
+---
+
 ### PHP7.1不兼容性
+
+---
 
 ##### 1.当传递参数过少时将抛出错误
 
@@ -514,6 +518,202 @@ call\_user\_func\(\) 现在在调用一个以引用作为参数的函数时将�
 2.  session.entropy\_length  
 3. session.hash\_function  
 4. session.hash\_bits\_per\_character
+
+---
+
+### PHP7.0 不兼容性
+
+---
+
+##### 1、foreach不再改变内部数组指针
+
+在PHP7之前，当数组通过 foreach 迭代时，数组指针会移动。现在开始，不再如此，见下面代码。
+
+```php
+$array = [0, 1, 2];
+foreach ($array as &$val) {
+    var_dump(current($array));
+}
+
+```
+
+**PHP5输出：**
+
+```php
+
+int(1)
+int(2)
+bool(false)
+```
+PHP7输出：
+```php
+int(0)
+int(0)
+int(0)
+```
+
+##### 2、foreach通过引用遍历时，有更好的迭代特性
+
+当使用引用遍历数组时，现在 foreach 在迭代中能更好的跟踪变化。例如，在迭代中添加一个迭代值到数组中，参考下面的代码：
+
+```
+
+```
+
+PHP5输出：  
+int\(0\)  
+PHP7输出：  
+int\(0\)  
+int\(1\)
+
+##### 3、十六进制字符串不再被认为是数字
+
+含十六进制字符串不再被认为是数字
+
+```
+
+```
+
+PHP5输出：  
+bool\(true\)  
+bool\(true\)  
+int\(15\)  
+string\(2\) “oo”  
+PHP7输出：  
+bool\(false\)  
+bool\(false\)  
+int\(0\)  
+Notice: A non well formed numeric value encountered in /tmp/test.php on line 5  
+string\(3\) “foo”
+
+##### 4、PHP7中被移除的函数
+
+被移除的函数列表如下：  
+call\_user\_func\(\) 和 call\_user\_func\_array\(\)从PHP 4.1.0开始被废弃。  
+已废弃的 mcrypt\_generic\_end\(\) 函数已被移除，请使用mcrypt\_generic\_deinit\(\)代替。  
+已废弃的 mcrypt\_ecb\(\), mcrypt\_cbc\(\), mcrypt\_cfb\(\) 和 mcrypt\_ofb\(\) 函数已被移除。  
+set\_magic\_quotes\_runtime\(\), 和它的别名 magic\_quotes\_runtime\(\)已被移除. 它们在PHP 5.3.0中已经被废弃,并且 在in PHP 5.4.0也由于魔术引号的废弃而失去功能。  
+已废弃的 set\_socket\_blocking\(\) 函数已被移除，请使用stream\_set\_blocking\(\)代替。  
+dl\(\)在 PHP-FPM 不再可用，在 CLI 和 embed SAPIs 中仍可用。  
+GD库中下列函数被移除：imagepsbbox\(\)、imagepsencodefont\(\)、imagepsextendfont\(\)、imagepsfreefont\(\)、imagepsloadfont\(\)、imagepsslantfont\(\)、imagepstext\(\)  
+在配置文件php.ini中，always\_populate\_raw\_post\_data、asp\_tags、xsl.security\_prefs被移除了。
+
+##### 5、new 操作符创建的对象不能以引用方式赋值给变量
+
+new 操作符创建的对象不能以引用方式赋值给变量
+
+```
+
+```
+
+PHP5输出：  
+Deprecated: Assigning the return value of new by reference is deprecated in /tmp/test.php on line 3  
+PHP7输出：  
+Parse error: syntax error, unexpected ‘new’ \(T\_NEW\) in /tmp/test.php on line 3
+
+##### 6、移除了 ASP 和 script PHP 标签
+
+使用类似 ASP 的标签，以及 script 标签来区分 PHP 代码的方式被移除。 受到影响的标签有：&lt;% %&gt;、&lt;%= %&gt;、
+
+##### 7、从不匹配的上下文发起调用
+
+在不匹配的上下文中以静态方式调用非静态方法， 在 PHP 5.6 中已经废弃， 但是在 PHP 7.0 中， 会导致被调用方法中未定义 $this 变量，以及此行为已经废弃的警告。
+
+```
+
+```
+
+PHP5输出：  
+Deprecated: Non-static method A::test\(\) should not be called statically, assuming $this from incompatible context in /tmp/test.php on line 8  
+object\(B\)\#1 \(0\) {  
+}  
+PHP7输出：  
+Deprecated: Non-static method A::test\(\) should not be called statically in /tmp/test.php on line 8  
+Notice: Undefined variable: this in /tmp/test.php on line 3  
+NULL
+
+##### 8、在数值溢出的时候，内部函数将会失败
+
+将浮点数转换为整数的时候，如果浮点数值太大，导致无法以整数表达的情况下， 在之前的版本中，内部函数会直接将整数截断，并不会引发错误。 在 PHP 7.0 中，如果发生这种情况，会引发 E\_WARNING 错误，并且返回 NULL。
+
+##### 9、JSON 扩展已经被 JSOND 取代
+
+JSON 扩展已经被 JSOND 扩展取代。  
+对于数值的处理，有以下两点需要注意的：  
+第一，数值不能以点号（.）结束 （例如，数值 34. 必须写作 34.0 或 34）。  
+第二，如果使用科学计数法表示数值，e 前面必须不是点号（.） （例如，3.e3 必须写作 3.0e3 或 3e3）。
+
+##### 10、INI 文件中 \# 注释格式被移除
+
+在配置文件INI文件中，不再支持以 \# 开始的注释行， 请使用 ;（分号）来表示注释。 此变更适用于 php.ini 以及用 parse\_ini\_file\(\) 和 parse\_ini\_string\(\) 函数来处理的文件。
+
+##### 11、$HTTP\_RAW\_POST\_DATA 被移除
+
+不再提供 $HTTP\_RAW\_POST\_DATA 变量。 请使用 php://input 作为替代。
+
+##### 12、yield 变更为右联接运算符
+
+在使用 yield 关键字的时候，不再需要括号， 并且它变更为右联接操作符，其运算符优先级介于 print 和 =&gt; 之间。 这可能导致现有代码的行为发生改变。可以通过使用括号来消除歧义。
+
+```
+
+```
+
+---
+
+### PHP 7.1.x 中废弃的特性
+
+---
+
+##### 1.ext/mcrypt
+
+mcrypt 扩展已经过时了大约10年，并且用起来很复杂。因此它被废弃并且被 OpenSSL 所取代。 从PHP 7.2起它将被从核心代码中移除并且移到PECL中。
+
+##### 2.mb\_ereg\_replace\(\)和mb\_eregi\_replace\(\)的Eval选项
+
+对于mb\_ereg\_replace\(\)和mb\_eregi\_replace\(\)的 e模式修饰符现在已被废弃
+
+##### 弃用或废除
+
+下面是被弃用或废除的 INI 指令列表. 使用下面任何指令都将导致 错误.  
+define\_syslog\_variables  
+register\_globals  
+register\_long\_arrays  
+safe\_mode  
+magic\_quotes\_gpc  
+magic\_quotes\_runtime  
+magic\_quotes\_sybase  
+弃用 INI 文件中以 ‘\#’ 开头的注释.  
+**弃用函数:**  
+call\_user\_method\(\) \(使用 call\_user\_func\(\) 替代\)  
+call\_user\_method\_array\(\) \(使用 call\_user\_func\_array\(\) 替代\)  
+define\_syslog\_variables\(\)  
+dl\(\)  
+ereg\(\) \(使用 preg\_match\(\) 替代\)  
+ereg\_replace\(\) \(使用 preg\_replace\(\) 替代\)  
+eregi\(\) \(使用 preg\_match\(\) 配合 ‘i’ 修正符替代\)  
+eregi\_replace\(\) \(使用 preg\_replace\(\) 配合 ‘i’ 修正符替代\)  
+set\_magic\_quotes\_runtime\(\) 以及它的别名函数 magic\_quotes\_runtime\(\)  
+session\_register\(\) \(使用\_SESSION 超全部变量替代\)  
+session\_is\_registered\(\) \(使用 $\_SESSION 超全部变量替代\)  
+set\_socket\_blocking\(\) \(使用 stream\_set\_blocking\(\) 替代\)  
+split\(\) \(使用 preg\_split\(\) 替代\)  
+spliti\(\) \(使用 preg\_split\(\) 配合 ‘i’ 修正符替代\)  
+sql\_regcase\(\)  
+mysql\_db\_query\(\) \(使用 mysql\_select\_db\(\) 和 mysql\_query\(\) 替代\)  
+mysql\_escape\_string\(\) \(使用 mysql\_real\_escape\_string\(\) 替代\)  
+废弃以字符串传递区域设置名称. 使用 LC\_\* 系列常量替代.  
+mktime\(\) 的 is\_dst 参数. 使用新的时区处理函数替代.  
+**弃用的功能:**  
+弃用通过引用分配 new 的返回值.  
+调用时传递引用被弃用.  
+已弃用的多个特性 allow\_call\_time\_pass\_reference、define\_syslog\_variables、highlight.bg、register\_globals、register\_long\_arrays、magic\_quotes、safe\_mode、zend.ze1\_compatibility\_mode、session.bug\_compat42、session.bug\_compat\_warn 以及 y2k\_compliance。
+
+
+
+
+
+
 
 ---
 
