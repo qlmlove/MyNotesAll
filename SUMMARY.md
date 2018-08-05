@@ -7,6 +7,7 @@
   * [Laravel框架](phpfen-lei/laravelkuang-jia.md)
   * [Yii2框架](phpfen-lei/yii2kuang-jia.md)
   * [PHP7新特性](phpfen-lei/php7xin-te-xing.md)
+  * [更好的函数](phpfen-lei/geng-hao-de-han-shu.md)
 * [Python分类](pythonfen-lei.md)
   * [基础知识](pythonfen-lei/ji-chu-zhi-shi.md)
   * [Django框架](pythonfen-lei/djangokuang-jia.md)
@@ -22,6 +23,4 @@
   * [HTML](qian-duan-fen-lei/html.md)
 * [Linux](linux.md)
   * [LNMP环境安装](linux/lnmphuan-jing-an-zhuang.md)
-
-
 
