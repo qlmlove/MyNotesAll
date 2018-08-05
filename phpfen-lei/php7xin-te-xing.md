@@ -424,33 +424,32 @@ foreach ($users as $user) {
 }  
 //以前获取数组某列值，现在如下  
 $userNames = array_column($users, 'name');
-
 ```
-6.Unicode codepoint 转译语法
+
+##### 28. Unicode codepoint 转译语法
+
 这接受一个以16进制形式的 Unicode codepoint，并打印出一个双引号或heredoc包围的 UTF-8 编码格式的字符串。 可以接受任何有效的 codepoint，并且开头的 0 是可以省略的。
 
- echo "\u{9876}"
-1
-旧版输出：\u{9876} 
+\`\`\`php
+
+echo "\u{9876}"  
+1  
+旧版输出：\u{9876}   
 新版输入：顶
-```
 
- 
+    ---
 
----
+    ### PHP7.1不兼容性
 
-### PHP7.1不兼容性
+    ---
 
----
+    ##### 1.当传递参数过少时将抛出错误
 
-##### 1.当传递参数过少时将抛出错误
+    在过去如果我们调用一个用户定义的函数时，提供的参数不足，那么将会产生一个警告\(warning\)。 现在，这个警告被提升为一个错误异常\(Error exception\)。这个变更仅对用户定义的函数生效， 并不包含内置函数。例如：
 
-在过去如果我们调用一个用户定义的函数时，提供的参数不足，那么将会产生一个警告\(warning\)。 现在，这个警告被提升为一个错误异常\(Error exception\)。这个变更仅对用户定义的函数生效， 并不包含内置函数。例如：
-
-```php
-function test($param){}
-test();
-```
+    ```php
+    function test($param){}
+    test();
 
 输出：
 
