@@ -96,8 +96,8 @@ function foo(bar $foo) {
 //其中函数foo中的参数规定了传入的参数必须为bar类的实例，否则系统会判断出错。同样对于数组来说，也可以进行判断，比如：  
 function foo(array $foo) {  
 }   
-　　foo(array(1, 2, 3)); // 正确，因为传入的是数组  
-　　foo(123); // 不正确，传入的不是数组
+foo(array(1, 2, 3)); // 正确，因为传入的是数组  
+foo(123); // 不正确，传入的不是数组
 
 function add(int $a) 
 { 
