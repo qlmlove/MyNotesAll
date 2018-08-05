@@ -406,16 +406,10 @@ if (empty(true)) {
 
 php://input 开始支持多次打开和读取，这给处理POST数据的模块的内存占用带来了极大的改善。
 
-25. Upload progress 文件上传
+##### 25. Upload progress 文件上传
 
 Session提供了上传进度支持，通过$\_SESSION\[“upload\_progress\_name”\]就可以获得当前文件上传的进度信息，结合Ajax就能很容易实现上传进度条了。  
 \[详细的看\]\[4\]
-
-
-
-
-
-
 
 ---
 
@@ -427,5 +421,5 @@ _**参考:**_
 
 \[3\]: [https://blog.csdn.net/fenglailea/article/details/52717364](https://blog.csdn.net/fenglailea/article/details/52717364) "PHP7.0,PHP7.1.x新特性"
 
-\[4\]: http://www.laruence.com/2011/10/10/2217.html "上传进度支持\(Upload progress in sessions\)"
+\[4\]: [http://www.laruence.com/2011/10/10/2217.html](http://www.laruence.com/2011/10/10/2217.html) "上传进度支持\(Upload progress in sessions\)"
 
