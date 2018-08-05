@@ -203,7 +203,6 @@ function swap(&$left, &$right) : void
 $a = 1;
 $b = 2;
 var_dump(swap($a, $b), $a, $b);
-
 ```
 
 以上例程会输出：
@@ -212,10 +211,104 @@ var_dump(swap($a, $b), $a, $b);
 null
 int(2)
 int(1)
-
 ```
 
 试图去获取一个 void 方法的返回值会得到 null ，并且不会产生任何警告。这么做的原因是不想影响更高层次的方法。
 
+##### 11. 返回值类型声明
 
+函数和匿名函数都可以指定返回值的类型
+
+```php
+function show(): array 
+{ 
+    return [1,2,3,4]; 
+}
+ 
+function arraysSum(array ...$arrays): array
+{
+  return array_map(function(array $array): int {
+      return array_sum($array);
+  }, $arrays);
+}
+
+```
+
+##### 12. 参数解包功能
+
+在调用函数的时候，通过 … 操作符可以把数组或者可遍历对象解包到参数列表，这和Ruby等语言中的扩张\(splat\)操作符类似
+
+```php
+function add($a, $b, $c) {  
+    return $a + $b + $c;  
+}  
+$arr = [2, 3];  
+add(1, ...$arr);
+
+```
+
+##### 13. 实例化类
+
+```php
+class test{  
+    function show(){  
+return 'test';  
+    }  
+}  
+echo (new test())->show();
+
+```
+
+##### 14. 支持 Class::{expr}\(\) 语法
+
+```php
+foreach ([new Human("Gonzalo"), new Human("Peter")] as $human) {  
+    echo $human->{'hello'}();  
+} 
+
+```
+
+##### 15. 列表解析和生成器表达式
+
+列表解析提供一个简单的方法对数组进行小规模操作:
+
+```php
+$firstNames = [foreach ($users as $user) yield $user->firstName];  
+```
+
+上述列表解析相等于下面的代码：
+
+```php
+$firstNames = [];  
+foreach ($users as $user) {  
+    $firstNames[] = $user->firstName;  
+}
+```
+
+也可以这样过滤数组:
+
+```php
+$underageUsers = [foreach ($users as $user) if ($user->age < 18) yield $user];  
+```
+
+生成器表达式也很类似，但是返回一个迭代器\(用于动态生成值\)而不是一个数组。
+
+##### 16. 迭代器 yield
+
+目前，自定义迭代器很少使用，因为它们的实现，需要大量的样板代码。生成器解决这个问题，并提供了一种简单的样板代码来创建迭代器。  
+例如，你可以定义一个范围函数作为迭代器:
+
+```php
+function *xrange($start, $end, $step = 1) {  
+    for ($i = $start; $i < $end; $i += $step) {  
+        yield $i;  
+    }  
+}  
+foreach (xrange(10, 20) as $i) {  
+    // ...  
+}  
+
+```
+
+上述xrange函数具有与内建函数相同的行为，但有一点区别：不是返回一个数组的所有值，而是返回一个迭代器动态生成的值。
 
