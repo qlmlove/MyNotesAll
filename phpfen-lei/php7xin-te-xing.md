@@ -115,5 +115,28 @@ foo([]);     // error
 foo("abc");  // error
 ```
 
+##### 6. 三元运算符
+
+原本格式为是\(expr1\) ? \(expr2\) : \(expr3\)
+
+如果expr1结果为True，则返回expr2的结果。
+
+新增一种书写方式，可以省略中间部分，书写为expr1 ?: expr3
+
+如果expr1结果为True,则返回expr1的结果
+
+```php
+$expr1=1;
+$expr2=2;
+//原格式  
+$expr=$expr1?$expr1:$expr2  
+//新格式  
+$expr=$expr1?:$expr2
+/* 输出结果:
+1
+1
+*/
+```
+
 
 
