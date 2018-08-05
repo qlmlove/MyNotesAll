@@ -534,18 +534,18 @@ $array = [0, 1, 2];
 foreach ($array as &$val) {
     var_dump(current($array));
 }
-
 ```
 
 **PHP5输出：**
 
 ```php
-
 int(1)
 int(2)
 bool(false)
 ```
+
 PHP7输出：
+
 ```php
 int(0)
 int(0)
@@ -556,7 +556,12 @@ int(0)
 
 当使用引用遍历数组时，现在 foreach 在迭代中能更好的跟踪变化。例如，在迭代中添加一个迭代值到数组中，参考下面的代码：
 
-```
+```php
+$array = [0];
+foreach ($array as &$val) {
+    var_dump($val);
+    $array[1] = 1;
+}
 
 ```
 
@@ -570,7 +575,11 @@ int\(1\)
 
 含十六进制字符串不再被认为是数字
 
-```
+```php
+var_dump("0x123" == "291");
+var_dump(is_numeric("0x123"));
+var_dump("0xe" + "0x1");
+var_dump(substr("foo", "0x1"));
 
 ```
 
@@ -602,7 +611,9 @@ GD库中下列函数被移除：imagepsbbox\(\)、imagepsencodefont\(\)、imagep
 
 new 操作符创建的对象不能以引用方式赋值给变量
 
-```
+```php
+class C {}
+$c =& new C;
 
 ```
 
@@ -619,7 +630,15 @@ Parse error: syntax error, unexpected ‘new’ \(T\_NEW\) in /tmp/test.php on l
 
 在不匹配的上下文中以静态方式调用非静态方法， 在 PHP 5.6 中已经废弃， 但是在 PHP 7.0 中， 会导致被调用方法中未定义 $this 变量，以及此行为已经废弃的警告。
 
-```
+```php
+class A {
+    public function test() { var_dump($this); }
+}
+// 注意：并没有从类 A 继承
+class B {
+    public function callNonStaticMethodOfA() { A::test(); }
+}
+(new B)->callNonStaticMethodOfA();
 
 ```
 
@@ -655,7 +674,17 @@ JSON 扩展已经被 JSOND 扩展取代。
 
 在使用 yield 关键字的时候，不再需要括号， 并且它变更为右联接操作符，其运算符优先级介于 print 和 =&gt; 之间。 这可能导致现有代码的行为发生改变。可以通过使用括号来消除歧义。
 
-```
+```php
+echo yield -1;
+// 在之前版本中会被解释为：
+echo (yield) - 1;
+// 现在，它将被解释为：
+echo yield (-1);
+yield $foo or die;
+// 在之前版本中会被解释为：
+yield ($foo or die);
+// 现在，它将被解释为：
+(yield $foo) or die;
 
 ```
 
@@ -708,12 +737,6 @@ mktime\(\) 的 is\_dst 参数. 使用新的时区处理函数替代.
 弃用通过引用分配 new 的返回值.  
 调用时传递引用被弃用.  
 已弃用的多个特性 allow\_call\_time\_pass\_reference、define\_syslog\_variables、highlight.bg、register\_globals、register\_long\_arrays、magic\_quotes、safe\_mode、zend.ze1\_compatibility\_mode、session.bug\_compat42、session.bug\_compat\_warn 以及 y2k\_compliance。
-
-
-
-
-
-
 
 ---
 
