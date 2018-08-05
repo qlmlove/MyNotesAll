@@ -334,12 +334,10 @@ $array = [
 ];  
 foreach ($array as list($a, $b)) {  
     echo "A: $a; B: $b\n";  
-} 
+}
 ```
 
-
-
-\[:1\]:[https://blog.csdn.net/h330531987/article/details/74364681](https://blog.csdn.net/h330531987/article/details/74364681)
+\[1\]:[https://blog.csdn.net/h330531987/article/details/74364681](https://blog.csdn.net/h330531987/article/details/74364681)
 
 \[2\]:
 
