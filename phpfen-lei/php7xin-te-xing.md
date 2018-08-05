@@ -421,11 +421,9 @@ PHP已经实现了strval、intval和floatval的函数。为了达到一致性将
 //从数据库获取一列，但返回是数组。  
 $userNames = [];  
 foreach ($users as $user) {  
-    $userNames[] = $user['name'];  
 }  
 //以前获取数组某列值，现在如下  
-$userNames = array_column($users, 'name');  
-
+$userNames = array_column($users, 'name');
 ```
 
 ### PHP7.1不兼容性
@@ -447,50 +445,35 @@ Uncaught Error: Too few arguments to function test(), 0 passed in %s on line %d 
 
 ##### 2.禁止动态调用函数
 
-禁止动态调用函数如下  
-\`\`\`php
+禁止动态调用函数如下
 
-assert\(\) - with a string as the first argument  
-compact\(\)  
-extract\(\)  
-func\_get\_args\(\)  
-func\_get\_arg\(\)  
-func\_num\_args\(\)  
-get\_defined\_vars\(\)  
-mb\_parse\_str\(\) - with one arg  
-parse\_str\(\) - with one arg
+1. assert\(\) - with a string as the first argument
+2. compact\(\)
+3. extract\(\)
+4. func\_get\_args\(\)
+5. func\_get\_arg\(\)
+6. func\_num\_args\(\)
+7. get\_defined\_vars\(\)
+8. mb\_parse\_str\(\) - with one arg
+9. parse\_str\(\) - with one arg 
 
-\`\`\`
-
-
+```php
+(function () {
+    'func_num_args'();
+})();
+```
 
 输出
 
-```
-Warning: Cannot 
-call
- func_num_args() dynamically 
-in
- %s 
-on
- line %d
+```php
+Warning: Cannot call func_num_args() dynamically in %s on line %d
 ```
 
 ##### 3.无效的类，接口，trait名称命名
 
 以下名称不能用于 类，接口或trait 名称命名：  
-void  
-iterable
-
-
-
-
-
-
-
-
-
-
+1. `void`  
+2. `iterable`
 
 ---
 
