@@ -4,13 +4,13 @@
 
 1. 空合并运算符（??）
 
-    简化判断
+简化判断
 
 ```php
 $param = $_GET['param'] ?? 1;
 ```
 
-    相当于：
+相当于：
 
 ```php
 $param = isset($_GET['param']) ? $_GET['param'] : 1;
