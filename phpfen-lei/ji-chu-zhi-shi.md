@@ -78,7 +78,7 @@ ID:123456
 
 ##### 4. 非变量array和strng也能支持下标获取
 
-```
+```php
 echo array(1,2,3)[0];
 echo [1, 2, 3][0];
 echo  "foobar"[2];
