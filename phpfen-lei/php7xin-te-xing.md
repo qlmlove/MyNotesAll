@@ -264,7 +264,25 @@ foreach ([new Human("Gonzalo"), new Human("Peter")] as $human) {
 }
 ```
 
-##### 15. 列表解析和生成器表达式
+##### 15. 迭代器 yield
+
+在旧版本中，自定义迭代器很少使用，因为它们的实现，需要大量的样板代码。生成器解决这个问题，并提供了一种简单的样板代码来创建迭代器。  
+例如，你可以定义一个范围函数作为迭代器:
+
+```php
+function *xrange($start, $end, $step = 1) {  
+    for ($i = $start; $i < $end; $i += $step) {  
+        yield $i;  
+    }  
+}  
+foreach (xrange(10, 20) as $i) {  
+    // ...  
+}
+```
+
+上述xrange函数具有与内建函数相同的行为，但有一点区别：不是返回一个数组的所有值，而是返回一个迭代器动态生成的值。
+
+##### 16. 列表解析和生成器表达式
 
 列表解析提供一个简单的方法对数组进行小规模操作:
 
@@ -289,21 +307,39 @@ $underageUsers = [foreach ($users as $user) if ($user->age < 18) yield $user];
 
 生成器表达式也很类似，但是返回一个迭代器\(用于动态生成值\)而不是一个数组。
 
-##### 16. 迭代器 yield
+##### 17. 多异常捕获处理
 
-在旧版本中，自定义迭代器很少使用，因为它们的实现，需要大量的样板代码。生成器解决这个问题，并提供了一种简单的样板代码来创建迭代器。  
-例如，你可以定义一个范围函数作为迭代器:
+一个catch语句块现在可以通过管道字符\(\|\)来实现多个异常的捕获。 这对于需要同时处理来自不同类的不同异常时很有用。
 
 ```php
-function *xrange($start, $end, $step = 1) {  
-    for ($i = $start; $i < $end; $i += $step) {  
-        yield $i;  
-    }  
-}  
-foreach (xrange(10, 20) as $i) {  
-    // ...  
+try {
+    // some code
+} catch (FirstException | SecondException $e) {
+    // handle first and second exceptions
+} catch (\Exception $e) {
+    // ...
+} finally{
+//
 }
 ```
 
-上述xrange函数具有与内建函数相同的行为，但有一点区别：不是返回一个数组的所有值，而是返回一个迭代器动态生成的值。
+##### 18. foreach 支持list\(\)
+
+对于“数组的数组”进行迭代，之前需要使用两个foreach，现在只需要使用foreach + list了，但是这个数组的数组中的每个数组的个数需要一样。看文档的例子一看就明白了。
+
+```php
+$array = [  
+    [1, 2],  
+    [3, 4],  
+];  
+foreach ($array as list($a, $b)) {  
+    echo "A: $a; B: $b\n";  
+} 
+```
+
+
+
+\[:1\]:[https://blog.csdn.net/h330531987/article/details/74364681](https://blog.csdn.net/h330531987/article/details/74364681)
+
+\[2\]:
 
