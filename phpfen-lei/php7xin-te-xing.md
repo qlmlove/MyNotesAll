@@ -409,7 +409,7 @@ php://input 开始支持多次打开和读取，这给处理POST数据的模块�
 ##### 25. Upload progress 文件上传
 
 Session提供了上传进度支持，通过$\_SESSION\[“upload\_progress\_name”\]就可以获得当前文件上传的进度信息，结合Ajax就能很容易实现上传进度条了。  
-\[详细的看\]\[4\]
+\[详细的介绍看\]\[4\]
 
 ---
 
