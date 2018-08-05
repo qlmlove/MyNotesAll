@@ -138,21 +138,19 @@ $expr=$expr1?:$expr2
 */
 ```
 
-##### 7. 参数跳跃
+##### 7. 参数跳跃\(只是一个提议,官方好像并没有采纳\)
 
 如果你有一个函数接受多个可选的参数，目前没有办法只改变最后一个参数，而让其他所有参数为默认值。  
 RFC上的例子，如果你有一个函数如下：
 
 ```php
-function create_query($where, $order_by, $join_type='', $execute = false, $report_errors = true) { ... }  
-
+function create_query($where, $order_by, $join_type='', $execute = false, $report_errors = true) { ... }
 ```
 
-那么有没有办法设置$report\_errors=false，而其他两个为默认值。为了解决这个跳跃参数的问题而提出：
+那么有没有办法设置`$report_errors=false`，而其他两个为默认值。为了解决这个跳跃参数的问题而提出：
 
 ```php
-create_query("deleted=0", "name", default, default, false);  
-
+create_query("deleted=0", "name", default, default, false);
 ```
 
 
