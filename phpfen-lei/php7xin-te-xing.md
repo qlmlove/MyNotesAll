@@ -350,7 +350,6 @@ $data = unserialize($foo, ["allowed_classes" => false]);
 $data = unserialize($foo, ["allowed_classes" => ["ClassName1", "ClassName2"]);
 //默认行为，和 unserialize($foo)相同
 $data = unserialize($foo, ["allowed_classes" => true]);
-
 ```
 
 ##### 20. intdiv\(\)
@@ -379,68 +378,38 @@ session_start(['cache_limiter' => 'private',
 这个是用来统计服务请求时间的，并用ms\(毫秒\)来表示
 
 ```php
-echo "脚本执行时间 ", round(microtime(true) - $_SERVER["REQUEST_TIME_FLOAT"], 2), "s";  
+echo "脚本执行时间 ", round(microtime(true) - $_SERVER["REQUEST_TIME_FLOAT"], 2), "s";
 ```
 
 23.empty\(\) 支持任意表达式
 
 empty\(\) 现在支持传入一个任意表达式，而不仅是一个变量
 
-```
+```php
 function always_false() {
     return false;
 }
- 
+
 if (empty(always_false())) {
     echo 'This will be printed.';
 }
- 
+
 if (empty(true)) {
     echo 'This will not be printed.';
 }
-
 ```
 
 输出  
-This will be printed.
+`This will be printed.`
 
+##### 24. php://input 可以被复用
 
+php://input 开始支持多次打开和读取，这给处理POST数据的模块的内存占用带来了极大的改善。
 
+25. Upload progress 文件上传
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+Session提供了上传进度支持，通过$\_SESSION\[“upload\_progress\_name”\]就可以获得当前文件上传的进度信息，结合Ajax就能很容易实现上传进度条了。  
+\[详细的看\]\[4\]
 
 
 
@@ -457,4 +426,6 @@ _**参考:**_
 \[2\]:[https://blog.csdn.net/fenglailea/article/details/9853645](https://blog.csdn.net/fenglailea/article/details/9853645) "php5.3 /4/5/6 新特性,使用PHP5.5/PHP5.6要注意的"
 
 \[3\]: [https://blog.csdn.net/fenglailea/article/details/52717364](https://blog.csdn.net/fenglailea/article/details/52717364) "PHP7.0,PHP7.1.x新特性"
+
+\[4\]: http://www.laruence.com/2011/10/10/2217.html "上传进度支持\(Upload progress in sessions\)"
 
