@@ -153,5 +153,20 @@ function create_query($where, $order_by, $join_type='', $execute = false, $repor
 create_query("deleted=0", "name", default, default, false);
 ```
 
+##### 8. 可变函数参数
+
+代替 func\_get\_args\(\)
+
+```php
+function add(...$args)  
+{  
+    $result = 0;  
+    foreach($args as $arg)  
+        $result += $arg;  
+    return $result;  
+} 
+
+```
+
 
 
