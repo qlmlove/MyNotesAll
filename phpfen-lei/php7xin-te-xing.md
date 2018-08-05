@@ -167,7 +167,7 @@ function add(...$args)
 }
 ```
 
-# 可为空（Nullable）类型 {#30}
+##### 9. 可为空（Nullable）类型
 
 类型允许为空，当启用这个特性时，传入的参数或者函数返回的结果要么是给定的类型，要么是 null 。可以通过在类型前面加上一个**问号**来使之成为可为空的。
 
@@ -176,7 +176,6 @@ function test(?string $name)
 {
     var_dump($name);
 }
-
 ```
 
 以上例程会输出：
@@ -185,10 +184,38 @@ function test(?string $name)
 string(5) "tpunt"
 NULL
 Uncaught Error: Too few arguments to function test(), 0 passed in...
+```
+
+##### 10. Void 函数
+
+在PHP 7 中引入的其他返回值类型的基础上，一个新的返回值类型void被引入。 返回值声明为 void 类型的方法要么干脆省去 return 语句，要么使用一个空的 return 语句。 对于 void 函数来说，null 不是一个合法的返回值。
+
+```php
+function swap(&$left, &$right) : void
+{
+    if ($left === $right) {
+        return;
+    }
+    $tmp = $left;
+    $left = $right;
+    $right = $tmp;
+}
+$a = 1;
+$b = 2;
+var_dump(swap($a, $b), $a, $b);
 
 ```
 
-# Void 函数 {#31}
+以上例程会输出：
+
+```php
+null
+int(2)
+int(1)
+
+```
+
+试图去获取一个 void 方法的返回值会得到 null ，并且不会产生任何警告。这么做的原因是不想影响更高层次的方法。
 
 
 
