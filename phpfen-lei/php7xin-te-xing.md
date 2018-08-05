@@ -164,9 +164,31 @@ function add(...$args)
     foreach($args as $arg)  
         $result += $arg;  
     return $result;  
-} 
+}
+```
+
+# 可为空（Nullable）类型 {#30}
+
+类型允许为空，当启用这个特性时，传入的参数或者函数返回的结果要么是给定的类型，要么是 null 。可以通过在类型前面加上一个**问号**来使之成为可为空的。
+
+```php
+function test(?string $name)
+{
+    var_dump($name);
+}
 
 ```
+
+以上例程会输出：
+
+```php
+string(5) "tpunt"
+NULL
+Uncaught Error: Too few arguments to function test(), 0 passed in...
+
+```
+
+# Void 函数 {#31}
 
 
 
