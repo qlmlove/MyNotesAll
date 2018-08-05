@@ -424,7 +424,18 @@ foreach ($users as $user) {
 }  
 //以前获取数组某列值，现在如下  
 $userNames = array_column($users, 'name');
+
 ```
+6.Unicode codepoint 转译语法
+这接受一个以16进制形式的 Unicode codepoint，并打印出一个双引号或heredoc包围的 UTF-8 编码格式的字符串。 可以接受任何有效的 codepoint，并且开头的 0 是可以省略的。
+
+ echo "\u{9876}"
+1
+旧版输出：\u{9876} 
+新版输入：顶
+```
+
+ 
 
 ---
 
