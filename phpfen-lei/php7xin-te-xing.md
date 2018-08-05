@@ -337,7 +337,13 @@ foreach ($array as list($a, $b)) {
 }
 ```
 
+---
+
+_**参考:**_
+
 \[1\]:[https://blog.csdn.net/h330531987/article/details/74364681](https://blog.csdn.net/h330531987/article/details/74364681)
 
-\[2\]:
+\[2\]:[https://blog.csdn.net/fenglailea/article/details/9853645](https://blog.csdn.net/fenglailea/article/details/9853645)
+
+\[3\]: https://blog.csdn.net/fenglailea/article/details/52717364
 
