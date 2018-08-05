@@ -1,5 +1,3 @@
-\[TOC\]
-
 # PHP基础知识
 
 ### 特性总结:
@@ -76,6 +74,14 @@ $o->sayHello();
 Hello World! 
 ID:123456 
  */
+```
+
+##### 4. 非变量array和strng也能支持下标获取
+
+```
+echo array(1,2,3)[0];
+echo [1, 2, 3][0];
+echo  "foobar"[2];
 ```
 
 
