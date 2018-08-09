@@ -21,7 +21,8 @@
    reboot
    ```
 
-   5. 执行结果如下:
+   执行结果如下:
+   ![](/assets/root4.png)
 
-![](/assets/root4.png)
+
 
