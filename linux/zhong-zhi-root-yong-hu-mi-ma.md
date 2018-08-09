@@ -12,25 +12,16 @@
 
 4. 第四步:依次输入以下命令，等待系统重启操作完毕，然后就可以使用新密码linuxprobe来登录Linux系统了
 
-   \`\`\`bash
+   ```bash
+   mount -o remount,rw /sysroot
+   chroot /sysroot
+   passwd
+   touch /.autorelabel
+   exit
+   reboot
+   ```
 
-mount -o remount,rw /sysroot
-
-chroot /sysroot
-
-passwd
-
-touch /.autorelabel
-
-exit
-
-reboot
-
-\`\`\`
-
-
-
-执行结果如下:
+    5. 执行结果如下:
 
 ![](/assets/root4.png)
 
