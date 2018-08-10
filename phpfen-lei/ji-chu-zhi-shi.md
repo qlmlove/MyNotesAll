@@ -53,6 +53,12 @@ _user\_ini.cache\_ttl_ 控制着重新读取用户 INI 文件的间隔时间。�
 
    > 如果给定的一个数超出了 integer 的范围，将会被解释为 float。同样如果执行的运算结果超出了 integer 范围，也会返回 float。
 
+4. PHP 中没有整除的运算符。_1/2_ 产生出 [float](mk:@MSITStore:D:\LAMPbrother\手册拓展及规范\php_manual_zh2016.chm::/res/language.types.float.html)_0.5_。值可以舍弃小数部分强制转换为 [integer](mk:@MSITStore:D:\LAMPbrother\手册拓展及规范\php_manual_zh2016.chm::/res/language.types.integer.html)，或者使用 [round\(\)](mk:@MSITStore:D:\LAMPbrother\手册拓展及规范\php_manual_zh2016.chm::/res/function.round.html) 函数可以更好地进行四舍五入。
+
+5. 强制转换为整型
+
+   > 要明确地将一个值转换为 [integer](mk:@MSITStore:D:\LAMPbrother\手册拓展及规范\php_manual_zh2016.chm::/res/language.types.integer.html)，用 _\(int\)_ 或 _\(integer\)_ 强制转换。不过大多数情况下都不需要强制转换，因为当运算符，函数或流程控制需要一个 [integer](mk:@MSITStore:D:\LAMPbrother\手册拓展及规范\php_manual_zh2016.chm::/res/language.types.integer.html) 参数时，值会自动转换。还可以通过函数 [intval\(\)](mk:@MSITStore:D:\LAMPbrother\手册拓展及规范\php_manual_zh2016.chm::/res/function.intval.html) 来将一个值转换成整型。
+
 #### float\(浮点型\)
 
 #### string\(字符串类型\)
