@@ -30,20 +30,24 @@ _user\_ini.cache\_ttl_ 控制着重新读取用户 INI 文件的间隔时间。�
 
 #### boolean\(布尔类型\)
 
-> 当转换为 [boolean](mk:@MSITStore:D:\LAMPbrother\手册拓展及规范\php_manual_zh2016.chm::/res/language.types.boolean.html) 时，以下值被认为是 `FALSE`：
+> 当转换为 boolean 时，以下值被认为是 `FALSE`：
 
-* [布尔](mk:@MSITStore:D:\LAMPbrother\手册拓展及规范\php_manual_zh2016.chm::/res/language.types.boolean.html)值 `FALSE` 本身
-* [整型](mk:@MSITStore:D:\LAMPbrother\手册拓展及规范\php_manual_zh2016.chm::/res/language.types.integer.html)值 0（零）
-* [浮点型](mk:@MSITStore:D:\LAMPbrother\手册拓展及规范\php_manual_zh2016.chm::/res/language.types.float.html)值 0.0（零）
-* 空[字符串](mk:@MSITStore:D:\LAMPbrother\手册拓展及规范\php_manual_zh2016.chm::/res/language.types.string.html)，以及[字符串](mk:@MSITStore:D:\LAMPbrother\手册拓展及规范\php_manual_zh2016.chm::/res/language.types.string.html) "0"
-* 不包括任何元素的[数组](mk:@MSITStore:D:\LAMPbrother\手册拓展及规范\php_manual_zh2016.chm::/res/language.types.array.html)
-* 不包括任何成员变量的[对象](mk:@MSITStore:D:\LAMPbrother\手册拓展及规范\php_manual_zh2016.chm::/res/language.types.object.html)（仅 PHP 4.0 适用）
-* 特殊类型 [NULL](mk:@MSITStore:D:\LAMPbrother\手册拓展及规范\php_manual_zh2016.chm::/res/language.types.null.html)（包括尚未赋值的变量）
-* 从空标记生成的 [SimpleXML](mk:@MSITStore:D:\LAMPbrother\手册拓展及规范\php_manual_zh2016.chm::/res/ref.simplexml.html) 对象
+* 布尔值 `FALSE` 本身
+* 整型值 0（零）
+* 浮点型值 0.0（零）
+* 空字符串，以及字符串 "0"
+* 不包括任何元素的数组
+* 不包括任何成员变量的对象（仅 PHP 4.0 适用）
+* 特殊类型 NULL（包括尚未赋值的变量）
+* 从空标记生成的 SimpleXML 对象
 
-  所有其它值都被认为是 `TRUE`（包括任何[资源](mk:@MSITStore:D:\LAMPbrother\手册拓展及规范\php_manual_zh2016.chm::/res/language.types.resource.html)）。
+  所有其它值都被认为是 `TRUE`（包括任何资源）。
 
 #### integer\(整型\)
+
+1. 要使用八进制表达，数字前必须加上 _0_（零）。要使用十六进制表达，数字前必须加上 _0x_。要使用二进制表达，数字前必须加上 _0b_。
+
+2. Integer 值的字长可以用常量 **`PHP_INT_SIZE`**来表示，自 PHP 4.4.0 和 PHP 5.0.5后，最大值可以用常量 **`PHP_INT_MAX`** 来表示。
 
 #### float\(浮点型\)
 
