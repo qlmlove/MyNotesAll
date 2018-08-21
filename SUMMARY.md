@@ -23,6 +23,7 @@
   * [JavaScript](qian-duan-fen-lei/javascript.md)
   * [CSS](qian-duan-fen-lei/css.md)
   * [HTML](qian-duan-fen-lei/html.md)
+  * [浏览器兼容性](qian-duan-fen-lei/liu-lan-qi-jian-rong-xing.md)
 * [Linux](linux.md)
   * [LNMP环境安装](linux/lnmphuan-jing-an-zhuang.md)
   * [重置root用户密码](linux/zhong-zhi-root-yong-hu-mi-ma.md)
