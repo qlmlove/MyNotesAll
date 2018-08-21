@@ -10,7 +10,7 @@
 6. 渐进识别的方式，从总体中逐渐排除局部。
 
 > 首先，巧妙的使用“\9”这一标记，将IE游览器从所有情况中分离出来。
-
+>
 > 接着，再次使用“+”将IE8和IE7、IE6分离开来，这样IE8已经独立识别。
 
 ```css
@@ -22,15 +22,15 @@ _background-color:#1e0bd1;/*IE6识别*/
 }
 ```
 
-怪异模式问题：漏写DTD声明，Firefox仍然会按照标准模式来解析网页，但在IE中会触发
+> 怪异模式问题：漏写DTD声明，Firefox仍然会按照标准模式来解析网页，但在IE中会触发
 
-怪异模式。为避免怪异模式给我们带来不必要的麻烦，最好养成书写DTD声明的好习惯。现在
+> 怪异模式。为避免怪异模式给我们带来不必要的麻烦，最好养成书写DTD声明的好习惯。现在
 
-可以使用\[html5\]\([http://www.w3.org/TR/html5/single-page.html\)推荐的写法：\`&lt;doctype](http://www.w3.org/TR/html5/single-page.html%29推荐的写法：`<doctype) html&gt;\`
+> 可以使用\[html5\]\([http://www.w3.org/TR/html5/single-page.html\)推荐的写法：\`&lt;doctype](http://www.w3.org/TR/html5/single-page.html%29推荐的写法：`<doctype) html&gt;\`上下margin重合问题
 
-上下margin重合问题
+> ie和ff都存在，相邻的两个div的margin-left和margin-right不会重合，但是margin-top和margin-bottom却会发生重合。
 
-ie和ff都存在，相邻的两个div的margin-left和margin-right不会重合，但是margin-top和margin-bottom却会发生重合。
+> 解决方法，养成良好的代码编写习惯，同时采用margin-top或者同时采用margin-bottom。
 
-解决方法，养成良好的代码编写习惯，同时采用margin-top或者同时采用margin-bottom。
+
 
