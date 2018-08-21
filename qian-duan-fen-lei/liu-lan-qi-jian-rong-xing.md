@@ -5,11 +5,11 @@
 
 4. 浮动ie产生的双倍距离（IE6双边距问题：在IE6下，如果对元素设置了浮动，同时又设置了margin-left或margin-right，margin值会加倍。）
 
-5.  \#box{ float:left; width:10px; margin:0 0 0 100px;}这种情况之下IE会产生20px的距离，解决方案是在float的标签样式控制中加入
+5. \#box{ float:left; width:10px; margin:0 0 0 100px;}这种情况之下IE会产生20px的距离，解决方案是在float的标签样式控制中加入
 
 \_display:inline;将其转化为行内属性。\(\_这个符号只有ie6会识别\)
 
-1. 渐进识别的方式，从总体中逐渐排除局部。
+1.  渐进识别的方式，从总体中逐渐排除局部。
 
 首先，巧妙的使用“\9”这一标记，将IE游览器从所有情况中分离出来。
 
