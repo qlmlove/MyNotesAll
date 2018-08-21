@@ -22,12 +22,9 @@
 > }
 > ```
 
-7. 怪异模式问题：漏写DTD声明，Firefox仍然会按照标准模式来解析网页，但在IE中会触发
+1. 怪异模式问题：漏写DTD声明，Firefox仍然会按照标准模式来解析网页，但在IE中会触发怪异模式。为避免怪异模式给我们带来不必要的麻烦，最好养成书写DTD声明的好习惯。现在可以使用\[html5\]\([http://www.w3.org/TR/html5/single-page.html\)推荐的写法：\`&lt;doctype](http://www.w3.org/TR/html5/single-page.html%29推荐的写法：`<doctype) html&gt;\`
+2. 上下margin重合问题
 
-> 怪异模式。为避免怪异模式给我们带来不必要的麻烦，最好养成书写DTD声明的好习惯。现在
->
-> 可以使用\[html5\]\([http://www.w3.org/TR/html5/single-page.html\)推荐的写法：\`&lt;doctype](http://www.w3.org/TR/html5/single-page.html%29推荐的写法：`<doctype) html&gt;\`上下margin重合问题
->
 > ie和ff都存在，相邻的两个div的margin-left和margin-right不会重合，但是margin-top和margin-bottom却会发生重合。
 >
 > 解决方法，养成良好的代码编写习惯，同时采用margin-top或者同时采用margin-bottom。
